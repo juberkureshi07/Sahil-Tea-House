@@ -1,7 +1,7 @@
 {
-  "name": "javagoat-whatsapp-bot",
+  "name": "sahil-tea-house-bot",
   "version": "1.0.0",
-  "description": "WhatsApp Bot linked to JavaGoat App",
+  "description": "WhatsApp Bot linked to Juber Kureshi",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -3,7 +3,7 @@ name: Sahil-Tea-House-Bot
 on:
 workflow_dispatch:
 schedule:
-- cron: '*/30 * * * *'   # runs every 30 minutes
+- cron: "*/30 * * * *"
 
 jobs:
 run-bot:
@@ -17,7 +17,7 @@ steps:
   - name: Setup Node.js
     uses: actions/setup-node@v4
     with:
-      node-version: '20'
+      node-version: "20"
 
   - name: Install Dependencies
     run: npm install
@@ -25,6 +25,4 @@ steps:
   - name: Run Bot
     env:
       FIREBASE_URL: ${{ secrets.FIREBASE_URL }}
-    run: |
-      echo "Starting WhatsApp Bot..."
-      node index.js
+    run: node index.js

@@ -1,26 +1,30 @@
 name: Sahil-Tea-House-Bot
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 */5 * * *' 
+workflow_dispatch:
+schedule:
+- cron: '*/30 * * * *'   # runs every 30 minutes
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+run-bot:
+runs-on: ubuntu-latest
+timeout-minutes: 350
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+steps:
+  - name: Checkout Code
+    uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: npm install
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '20'
 
-      - name: Start AI Bot
-        env:
-          FIREBASE_URL: ${{ secrets.FIREBASE_URL }}
-        run: npm start
+  - name: Install Dependencies
+    run: npm install
+
+  - name: Run Bot
+    env:
+      FIREBASE_URL: ${{ secrets.FIREBASE_URL }}
+    run: |
+      echo "Starting WhatsApp Bot..."
+      node index.js
